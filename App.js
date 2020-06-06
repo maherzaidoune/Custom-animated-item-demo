@@ -37,7 +37,8 @@ class App extends React.Component {
         width: 200,
         height: 100,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderWidth: 0.3
       }]}>
         <Animated.Text style={animatedTextStyle}>{item}</Animated.Text>
       </Animated.View>
@@ -50,6 +51,10 @@ class App extends React.Component {
         inputRange: [-1, 0, 1],
         outputRange: ['#fff', '#312C1D', '#fff']
       }),
+      borderColor: animatedValue.interpolate({
+        inputRange: [-1, 0, 1],
+        outputRange: ['#312C1D', '#fff', '#312C1D']
+      }),
     };
   }
 
@@ -61,8 +66,8 @@ class App extends React.Component {
       }),
       fontSize:  animatedValue.interpolate({
         inputRange: [-1, 0, 1],
-        outputRange: [14, 28, 14]
-      }),
+        outputRange: [14, 29, 14]
+      })
     };
   }
 
@@ -78,11 +83,13 @@ class App extends React.Component {
             sliderWidth={Dimensions.get('window').width}
             itemWidth={220}
             enableSnap
+            inactiveSlideScale={1}
+            inactiveSlideOpacity={1}
             slideStyle={{
               paddingBottom: 10,
               paddingTop: 10,
               paddingStart: 10,
-              paddingTop: 0,
+              paddingTop: 10,
               justifyContent: 'center',
             }}
             useNativeDriver={false}
